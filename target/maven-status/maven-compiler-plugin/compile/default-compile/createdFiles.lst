@@ -1,3 +1,6 @@
+SubRedditer\MemeScrapper.class
 com\memes\memegen\MemeRecommender.class
 com\memes\memegen\resources\JavaEE8Resource.class
 com\memes\memegen\JAXRSConfiguration.class
+memes\Meme.class
+memes\MemesLists.class

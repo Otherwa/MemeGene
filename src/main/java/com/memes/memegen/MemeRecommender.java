@@ -4,13 +4,24 @@
  */
 package com.memes.memegen;
 
+import SubRedditer.MemeScrapper;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import memes.Meme;
+import org.json.JSONArray;
+import org.json.JSONObject;
 /**
  *
  * @author athar
@@ -55,7 +66,22 @@ public class MemeRecommender extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        
+
+        List<Meme> memeList = new ArrayList();
+        
+        // Call To Append More
+        
+        memeList.addAll(MemeScrapper.getRedditmemes());
+        memeList.addAll(MemeScrapper.getRedditmemes());
+        memeList.addAll(MemeScrapper.getRedditmemes());
+        
+        request.setAttribute("redditPosts", memeList);
+
+        // Forward the request to the JSP file
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/recommendmemes.jsp");
+        dispatcher.forward(request, response);
+        
     }
 
     /**
