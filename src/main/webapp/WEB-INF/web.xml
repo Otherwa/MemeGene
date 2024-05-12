@@ -5,8 +5,9 @@
         <servlet-class>com.memes.memegen.MemeRecommender</servlet-class>
     </servlet>
     <servlet-mapping>
+        <!-- Route -->
         <servlet-name>MemeRecommender</servlet-name>
-        <url-pattern>/MemeRecommender</url-pattern>
+        <url-pattern>/</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
