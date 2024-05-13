@@ -26,9 +26,9 @@ public class MemeScrapper {
     
    public static List<Meme> getRedditmemes() throws IOException {
     String[] apiUrl = {
-        "https://meme-api.com/gimme/catmemes/6",
-        "https://meme-api.com/gimme/wholesomememes/6",
-        "https://meme-api.com/gimme/dankmemes/6",
+        "https://meme-api.com/gimme/catmemes/13",
+        "https://meme-api.com/gimme/wholesomememes/13",
+        "https://meme-api.com/gimme/dankmemes/13",
     };
 
     Random random = new Random();
