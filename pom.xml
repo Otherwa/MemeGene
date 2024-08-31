@@ -41,6 +41,30 @@
             <version>3.12.10</version> <!-- Use the latest version -->
         </dependency>
 
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>5.6.15.Final</version>
+        </dependency>
+        
+         <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>5.6.15.Final</version>
+        </dependency>
+        
+           <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>6.1.8</version>
+        </dependency>
+
+            <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>6.1.8</version>
+        </dependency>
+
         <!-- https://mvnrepository.com/artifact/javax.servlet/jstl -->
         <dependency>
             <groupId>javax.servlet</groupId>

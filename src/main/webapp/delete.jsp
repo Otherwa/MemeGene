@@ -8,7 +8,7 @@
 <body>
     <h1>Delete Meme</h1>
     <form method="post" action="deleteMeme">
-        <input type="hidden" name="memeId" value="${meme.getObjectId("_id")}">
+        <input type="hidden" required="true" name="memeId" value="${meme.getObjectId("_id")}">
         <p>Are you sure you want to delete this meme?</p>
         <p>Title: ${meme.getString("Title")}</p>
         <p>Author: ${meme.getString("Author")}</p>

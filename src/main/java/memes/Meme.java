@@ -10,15 +10,16 @@ package memes;
  */
 public class Meme {
 
-    private final String postLink;
-    private final String subreddit;
-    private final String title;
-    private final String url;
-    private final boolean nsfw;
-    private final boolean spoiler;
-    private final String author;
-    private final int ups;
+    private String postLink;
+    private  String subreddit;
+    private  String title;
+    private  String url;
+    private  boolean nsfw;
+    private boolean spoiler;
+    private String author;
+    private int ups;
 
+   
     
     public Meme(String postLink, String subreddit, String title, String url, boolean nsfw, boolean spoiler, String author, int ups) {
         this.postLink = postLink;
@@ -31,6 +32,9 @@ public class Meme {
         this.ups = ups;
     }
 
+    public Meme(){
+    }
+    
     public String getPostLink() {
         return postLink;
     }
