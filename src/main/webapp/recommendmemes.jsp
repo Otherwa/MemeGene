@@ -1,41 +1,48 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Recommended Memes</title>
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css"  rel="stylesheet" />
-        <!-- ml5 -->
-        <script src="https://unpkg.com/ml5@latest/dist/ml5.min.js"></script>
-        <!--ORC-->
-        <!-- v5 -->
-        <script src='https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js'></script>
-    </head>
-    <body class="p-4">
-        <h1 class="flex items-center text-5xl font-extrabold dark:text-white">Recommended Memes</h1>
-        <br/>
-        <div class="p-4">
-            <button class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700" onclick="convertHTMLToCSVAndDownload()">Download</button>
+<%@page contentType="text/html" pageEncoding="UTF-8" %>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+        <!DOCTYPE html>
+        <html>
 
-        </div>
+        <head>
+            <title>Recommended Memes</title>
+            <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
+            <!-- ml5 -->
+            <script src="https://unpkg.com/ml5@latest/dist/ml5.min.js"></script>
+            <!--ORC-->
+            <!-- v5 -->
+            <script src='https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js'></script>
+        </head>
 
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 p-4">           
-            <c:forEach var="meme" items="${redditPosts}">
-                <div class="gap-2 p-5 border border-green-300 rounded">                    
-                    <div class="code p-2">
-                        <img class="h-80 max-w-full rounded-lg memeurl" src="${meme.getUrl()}" alt="${meme.title}">
-                        <p class="ms-2 font-semibold text-gray-500 dark:text-gray-400 memeauthor">Author: ${meme.getAuthor()}</p>
-                        <code class="title memetitle">Title: ${meme.getTitle()}</code>
-                        <p class="memesub">Subreddit: ${meme.getSubreddit()}</p>
-                        <p class="sentiment"></p>
-                        <p class="sentiment-label"></p>
-                        <p class="upvotes bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-green-400 border border-green-400">UpVotes: ${meme.getUps()}</p>
+        <body class="p-4">
+            <h1 class="flex items-center text-5xl font-extrabold dark:text-white">Recommended Memes</h1>
+            <br />
+            <div class="p-4">
+                <button
+                    class="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
+                    onclick="convertHTMLToCSVAndDownload()">Download</button>
+
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 p-4">
+                <c:forEach var="meme" items="${redditPosts}">
+                    <div class="gap-2 p-5 border border-green-300 rounded">
+                        <div class="code p-2">
+                            <img class="h-80 max-w-full rounded-lg memeurl" src="${meme.getUrl()}" alt="${meme.title}">
+                            <p class="ms-2 font-semibold text-gray-500 dark:text-gray-400 memeauthor">Author:
+                                ${meme.getAuthor()}</p>
+                            <code class="title memetitle">Title: ${meme.getTitle()}</code>
+                            <p class="memesub">Subreddit: ${meme.getSubreddit()}</p>
+                            <p class="sentiment"></p>
+                            <p class="sentiment-label"></p>
+                            <p
+                                class="upvotes bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-green-400 border border-green-400">
+                                UpVotes: ${meme.getUps()}</p>
+                        </div>
                     </div>
-                </div>
-            </c:forEach>
-        </div>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
-        <script type="text/javascript">
+                </c:forEach>
+            </div>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+            <script type="text/javascript">
                 console.log('ml5 version:', ml5.version);
 
                 const sentiment = ml5.sentiment('movieReviews', modelReady);
@@ -64,7 +71,7 @@
 
                         try {
                             // Perform OCR on the image
-                            const {data: {text}} = await worker.recognize(imageURL);
+                            const { data: { text } } = await worker.recognize(imageURL);
                             console.log("OCR Text:", text_title + " " + text);
 
                             let prediction = sentiment.predict(text);
@@ -167,7 +174,7 @@
                     });
 
 
-                    const blob = new Blob([csvContent], {type: 'text/csv;charset=utf-8;'});
+                    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
                     const link = document.createElement("a");
                     if (link.download !== undefined) {
                         const url = URL.createObjectURL(blob);
@@ -182,6 +189,7 @@
 
 
 
-        </script>
-    </body>
-</html>
+            </script>
+        </body>
+
+        </html>
