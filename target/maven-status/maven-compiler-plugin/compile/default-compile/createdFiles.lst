@@ -1,0 +1,12 @@
+com\memes\memegen\deleteMeme.class
+com\memes\memegen\MemeListServlet.class
+com\memes\memegen\editMeme.class
+com\memes\memegen\JAXRSConfiguration.class
+memes\Meme.class
+com\memes\memegen\updateMeme.class
+MongoConfig\MongoDBConnection.class
+memes\MemesLists.class
+memes\MemeDAO.class
+SubRedditer\MemeScrapper.class
+com\memes\memegen\MemeRecommender.class
+com\memes\memegen\resources\JavaEE8Resource.class

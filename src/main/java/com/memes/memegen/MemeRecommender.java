@@ -22,6 +22,7 @@ import javax.servlet.http.HttpServletResponse;
 import memes.Meme;
 import org.json.JSONArray;
 import org.json.JSONObject;
+
 /**
  *
  * @author athar
@@ -32,10 +33,10 @@ public class MemeRecommender extends HttpServlet {
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
      *
-     * @param request servlet request
+     * @param request  servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @throws IOException      if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -45,7 +46,7 @@ public class MemeRecommender extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet MemeRecommender</title>");            
+            out.println("<title>Servlet MemeRecommender</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet MemeRecommender at " + request.getContextPath() + "</h1>");
@@ -54,43 +55,43 @@ public class MemeRecommender extends HttpServlet {
         }
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the
+    // + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
-     * @param request servlet request
+     * @param request  servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @throws IOException      if an I/O error occurs
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
 
-        List<Meme> memeList = new ArrayList();
-        
+        List<Meme> memeList = new ArrayList<>();
+
         // Call To Append More
-        
+
         memeList.addAll(MemeScrapper.getRedditmemes());
         memeList.addAll(MemeScrapper.getRedditmemes());
         memeList.addAll(MemeScrapper.getRedditmemes());
-        
+
         request.setAttribute("redditPosts", memeList);
 
         // Forward the request to the JSP file
         RequestDispatcher dispatcher = request.getRequestDispatcher("/recommendmemes.jsp");
         dispatcher.forward(request, response);
-        
+
     }
 
     /**
      * Handles the HTTP <code>POST</code> method.
      *
-     * @param request servlet request
+     * @param request  servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @throws IOException      if an I/O error occurs
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
