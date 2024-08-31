@@ -23,7 +23,7 @@
     <servlet-mapping>
         <!-- Route -->
         <servlet-name>MemeRecommender</servlet-name>
-        <url-pattern>/</url-pattern>
+        <url-pattern>/MemeRecommender</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>MemeListServlet</servlet-name>
